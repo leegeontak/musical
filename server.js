@@ -28,10 +28,10 @@ const puppeteer = require("puppeteer");
 // };
 // scrape();
 app.get("/api/kopis", async (req, res) => {
-    const text = encodeURIComponent("시카고");
+    const text = encodeURIComponent("오페라의 유령");
     try {
         const response = await axios.get(
-            `http://www.kopis.or.kr/openApi/restful/pblprfr?service=41cc2c339f7b4c66b8b0f47b25a377d1&shprfnm=${text}&stdate=20240901&eddate=20241030&cpage=1&rows=20`,
+            `http://www.kopis.or.kr/openApi/restful/pblprfr?service=41cc2c339f7b4c66b8b0f47b25a377d1&shprfnm=${text}&stdate=20120901&eddate=20241030&shcate=GGGA&cpage=1&rows=20`,
             {
                 params: {
                     serviceKey: "41cc2c339f7b4c66b8b0f47b25a377d1",
