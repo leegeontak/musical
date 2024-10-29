@@ -1,0 +1,31 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+.musicalContainer {
+    box-sizing: border-box;
+    display: grid;
+    width: 70%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    /* padding: 10px; */
+    /* border: 1px solid black; */
+}
+.tiketItem {
+    /* border-radius: 10px; */
+    border: 1px solid black;
+}
+.musicalImg {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 30px;
+}
+.musicalImg img {
+    width: 100%;
+}
+.musicalName,
+.musicalDate {
+    margin-left: 20px;
+}

@@ -2,7 +2,9 @@
     "description": "",
     "dependencies": {
         "axios": "^1.7.7",
-        "express": "^4.21.0",
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "express": "^4.21.1",
         "puppeteer": "^23.4.1",
         "react-router-dom": "^6.26.2",
         "xml2js": "^0.6.2"

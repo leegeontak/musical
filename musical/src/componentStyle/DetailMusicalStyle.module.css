@@ -1,0 +1,39 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+.detailMusicalContainer {
+    width: 55%;
+}
+.musicalInfoContainer {
+    box-sizing: border-box;
+    display: flex;
+}
+.imgbox {
+    width: 40%;
+}
+.imgbox img {
+    border-radius: 20px;
+    width: 100%;
+}
+.info {
+    margin-left: 20px;
+    width: 60%;
+}
+.musicalName {
+    border-bottom: 1px solid black;
+}
+.soundBar {
+    border: 1px solid black;
+    text-align: center;
+}
+.introImg {
+    margin-top: 50px;
+}
+.introImg img {
+    width: 100%;
+}
+h3 {
+    margin-bottom: 50px;
+}

@@ -1,0 +1,12 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.randomMusical {
+    width: 50%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height: 500px;
+    border: 1px solid black;
+}

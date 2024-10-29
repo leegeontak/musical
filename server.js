@@ -2,6 +2,10 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const xml2js = require("xml2js");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+app.use(cors());
+app.use(express.json());
 // import puppeteer from "puppeteer";
 const puppeteer = require("puppeteer");
 // const scrape = async () => {
@@ -47,6 +51,61 @@ app.get("/api/kopis", async (req, res) => {
             }
             // 변환된 JSON 응답 전송
             res.json(result);
+        });
+    } catch (error) {
+        res.status(500).json({ error: "API call failed" });
+    }
+});
+app.post("/search", async (req, res) => {
+    const { searchData } = req.body;
+    console.log("클라이언트로부터 받은 검색어:", searchData); // searchData 확인
+    try {
+        const response = await axios.get(
+            `http://www.kopis.or.kr/openApi/restful/pblprfr?service=41cc2c339f7b4c66b8b0f47b25a377d1&shprfnm=${searchData}&stdate=20120901&eddate=20241030&shcate=GGGA&cpage=1&rows=20`,
+            {
+                params: {
+                    serviceKey: "41cc2c339f7b4c66b8b0f47b25a377d1",
+                    otherParam: "value",
+                },
+                responseType: "text",
+            }
+        );
+        const parser = new xml2js.Parser();
+        parser.parseString(response.data, (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: "Failed to parse XML" });
+            }
+            console.log(result);
+            // 변환된 JSON 응답 전송
+            res.json(result);
+        });
+    } catch (error) {
+        res.status(500).json({ error: "API call failed" });
+    }
+});
+app.post("/detail", async (req, res) => {
+    const { musicalID } = req.body;
+    console.log(req.body);
+    console.log("클라이언트로부터 받은 검색어:", musicalID); // searchData 확인
+    try {
+        const response = await axios.get(
+            `http://kopis.or.kr/openApi/restful/pblprfr/${musicalID}?service=41cc2c339f7b4c66b8b0f47b25a377d1`,
+            {
+                params: {
+                    serviceKey: "41cc2c339f7b4c66b8b0f47b25a377d1",
+                    otherParam: "value",
+                },
+                responseType: "text",
+            }
+        );
+        const parser = new xml2js.Parser();
+        parser.parseString(response.data, (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: "Failed to parse XML" });
+            }
+            console.log(result.dbs.db);
+            // 변환된 JSON 응답 전송
+            res.json(result.dbs.db);
         });
     } catch (error) {
         res.status(500).json({ error: "API call failed" });
